@@ -3,11 +3,10 @@
 set -e
 
 CLI_PATH=/iroha_client_cli
-CONF_JSON=/resources
+CONF_JSON=/root
 THREAD=1 #TPS
 date
 echo "rate: $THREAD calls / second"
-START=$(date +%s);
 
 get_asset () {
   $CLI_PATH -c $CONF_JSON/config_$1.json asset get --account_id="Alice@Soramitsu" --id="XOR#Soramitsu"
@@ -43,7 +42,7 @@ initiate
 sleep 4
 while true
 do
-  echo $(($(date +%s) - START)) | awk '{print int($max/60)":"int($max%60)}'
+  date
   sleep 1
 
   for i in `seq 1 $THREAD`
