@@ -44,11 +44,11 @@ sleep 4
 while true
 do
   echo $(($(date +%s) - START)) | awk '{print int($max/60)":"int($max%60)}'
-  sleep 5
+  sleep 1
 
   for i in `seq 1 $THREAD`
   do
-    asset_mint $((RANDOM%3+1)) &
+    asset_mint $((RANDOM%4+1)) &
   done
-  get_asset $((RANDOM%3+1)) &
+  get_asset $((RANDOM%4+1)) &
 done
