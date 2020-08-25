@@ -13,7 +13,7 @@ services:
     entrypoint: "/root/load-test.sh"
     volumes:
       - /opt/iroha2-longevity/load_iroha2/load.sh:/root/load-test.sh:ro
-      - /opt/iroha2-longevity/load_iroha2/resources:/root/config_1.json:ro
+      - /opt/iroha2-longevity/load_iroha2/resources/:/root/:ro
     logging:
       driver: "json-file"
       options:
