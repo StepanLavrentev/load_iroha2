@@ -1,0 +1,10 @@
+{
+  "TORII_URL": "s3.tst-new.iroha.tech:1337",
+  "CONNECT_TORII_URL": "127.0.0.1:8888",
+  "LOGGER_CONFIGURATION": {},
+  "PUBLIC_KEY": "ed20570d63f62cfbb4c07402358689f3a594bfd9d825050cb31d4df533e1d918355f",
+  "PRIVATE_KEY": {
+    "digest_function": "ed25519",
+    "payload": "3477e85ce4f64c1ab4253c9f3d4080ff04ed18685767c4c22666601e1b5764f4570d63f62cfbb4c07402358689f3a594bfd9d825050cb31d4df533e1d918355f"
+  }
+}

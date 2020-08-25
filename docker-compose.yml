@@ -1,0 +1,24 @@
+version: "2.4"
+
+services:
+  iroha2-longevity:
+    image: hyperledger/iroha:iroha2-dev-cli
+    container_name: iroha2-longevity
+    restart: always
+    mem_limit: "512m"
+    environment:
+      TORII_URL: 's1.tst-new.iroha.tech:1337'
+      PUBLIC_KEY: 'ed20570d63f62cfbb4c07402358689f3a594bfd9d825050cb31d4df533e1d918355f'
+      PRIVATE_KEY: '{"digest_function": "ed25519", "payload": "3477e85ce4f64c1ab4253c9f3d4080ff04ed18685767c4c22666601e1b5764f4570d63f62cfbb4c07402358689f3a594bfd9d825050cb31d4df533e1d918355f"}'
+    entrypoint: "/root/load-test.sh"
+    volumes:
+      - /opt/iroha2-longevity/load-test.sh:/root/load-test.sh:ro
+      - /opt/iroha2-longevity/config_1.json:/root/config_1.json:ro
+      - /opt/iroha2-longevity/config_2.json:/root/config_2.json:ro
+      - /opt/iroha2-longevity/config_3.json:/root/config_3.json:ro
+      - /opt/iroha2-longevity/config_4.json:/root/config_4.json:ro
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "100m"
+        max-file: "10"
