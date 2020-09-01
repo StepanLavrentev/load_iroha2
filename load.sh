@@ -5,6 +5,7 @@ set -e
 CLI_PATH=~/iroha/target/debug/iroha_client_cli
 CONF_JSON=~/load_iroha2/resources
 THREAD=1 #TPS
+nodes=$1
 date
 echo "rate: $THREAD calls / second"
 
@@ -47,7 +48,7 @@ do
 
   for i in `seq 1 $THREAD`
   do
-    asset_mint $((RANDOM%4+1)) &
+    asset_mint $((RANDOM%$nodes+1)) &
   done
-  get_asset $((RANDOM%4+1)) &
+  get_asset $((RANDOM%$nodes+1)) &
 done
