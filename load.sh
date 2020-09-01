@@ -2,8 +2,8 @@
 
 set -e
 
-CLI_PATH=/iroha_client_cli
-CONF_JSON=/root
+CLI_PATH=~/iroha/target/debug/iroha_client_cli
+CONF_JSON=~/load_iroha2/resources
 THREAD=1 #TPS
 date
 echo "rate: $THREAD calls / second"
