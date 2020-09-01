@@ -6,6 +6,7 @@ CLI_PATH=~/iroha/target/debug/iroha_client_cli
 CONF_JSON=~/load_iroha2/resources
 THREAD=1 #TPS
 nodes=$1
+config_postfix=$((RANDOM%$nodes+1))
 date
 echo "rate: $THREAD calls / second"
 
@@ -39,6 +40,11 @@ initiate () {
   $CLI_PATH -c $CONF_JSON/config_1.json asset register --name="XOR" --domain="Soramitsu"
 }
 
+if nodes=0
+  then
+  config_postfix=1
+fi
+
 initiate
 sleep 4
 while true
@@ -48,7 +54,7 @@ do
 
   for i in `seq 1 $THREAD`
   do
-    asset_mint $((RANDOM%$nodes+1)) &
+    asset_mint $config_postfix &
   done
-  get_asset $((RANDOM%$nodes+1)) &
+  get_asset $config_postfix &
 done
